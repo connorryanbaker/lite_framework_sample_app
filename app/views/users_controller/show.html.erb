@@ -1,0 +1,32 @@
+<main class="container">
+  <h1><%= @user.username %></h1>
+  <% if @user.todos.length > 0 %>
+    <h3>Todos</h3>
+  <% end %>
+  <ul>
+    <% @user.todos.each do |todo| %>
+    
+      <li class="todo-item">
+        <h3 class="todo-title" data-id="<%= todo.id %>"><%= todo.title %></h3>
+        <a href="/todos/<%= todo.id %>/edit">Edit Todo</a>
+        <form action="/todos/<%= todo.id %>" method="post">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Done!">
+        </form>
+      </li>
+      <p class="hidden todo-description" data-id="<%= todo.id %>">
+        <%= todo.description%>
+      </p>
+    <% end %>
+  </ul>
+  <h3>Add a Todo!</h3>
+  <form action="/users/<%= @user.id %>/todos" method="post">
+    <label for="title">Title
+      <input type="text" name="title">
+    </label>
+    <label for="description">Description
+      <input type="text" name="description">
+    </label>
+    <input type="submit" value="Create Todo" class="button">
+  </form>
+</main>

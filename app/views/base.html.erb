@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' href='/app/public/styles.css'>
+    <script src='/app/public/script.js' type='text/javascript'></script>
+  </head>
+	<body>
+    <nav class="main-nav">
+      <div class="left-nav">
+      <% if @current_user %>
+        <h3>Welcome back, <strong><%= current_user.username %></strong></h3>
+        <form action="/session" method="post">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Log Out" class="button">
+        </form>
+      <% else %>
+        <h1>Welcome!</h1>
+      <% end %>
+      </div>
+      <div class="right-nav">
+        <a href="/"><em>Todo App Lite</em></a>
+      </div>
+    </nav>
+    <%= @template %>
+  </body>
+</html>

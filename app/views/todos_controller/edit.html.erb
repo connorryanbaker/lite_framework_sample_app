@@ -1,0 +1,17 @@
+<main class="container">
+  <h3>Edit todo : 
+    <em class="todo-title">
+      <%= @todo.title %>
+    </em>
+  </h3>
+  <form action="/todos/<%= @todo.id %>" method="post">
+    <input type="hidden" name="_method" value="PUT">
+    <label for="title">Title
+      <input data-input="edit-title" type="text" name="title" value="<%= @todo.title %>">
+    </label>
+    <label for="description">Description
+      <input type="text" name="description" value="<%= @todo.description %>">
+    </label>
+    <input type="submit" value="Update Todo" class="button">
+  </form>
+</main>
