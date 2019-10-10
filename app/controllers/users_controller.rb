@@ -17,10 +17,15 @@ class UsersController < ControllerBase
 
   def create
     name, password = params['username'] || params[:username], params['password'] || params[:password]
-    @user = User.new(username: name, password: password)
-    @user.save
-    session[:key] = @user.reset_session_token!
-    redirect_to('/')
+    if name.length < 6 || passsword.length < 6
+      flash['errors'] = ['Whoops! Minimum length for username / password is six characters']
+      render('new')
+    else
+      @user = User.new(username: name, password: password)
+      @user.save
+      session[:key] = @user.reset_session_token!
+      redirect_to('/')
+    end
   end
 
   def delete

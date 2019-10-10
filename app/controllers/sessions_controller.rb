@@ -8,6 +8,7 @@ class SessionsController < ControllerBase
 			session[:key] = user.reset_session_token!
       redirect_to('/')
     else
+      flash['errors'] = ['Whoops! Invalid credentials.']
       render('new')
     end
 	end

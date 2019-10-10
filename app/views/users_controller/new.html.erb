@@ -1,7 +1,15 @@
-<form action='/users' method='post'>
-  <label for='username'>Username</label>
-  <input type='text' name='username'>
-  <label for='password'>Password</label>
-	<input type='password' name='password'>
-  <input type='submit' value='create user'>
-</form>
+<main class='container'>
+  <h3>Sign Up</h3>
+  <form action='/users' method='post' class='container'>
+    <div class='form-input-wrap'>
+      <label class='form-input-label' for='username'>Username: </label>
+      <input class='form-input' type='text' name='username'>
+    </div>
+    <div class='form-input-wrap'>
+      <label class='form-input-label' for='password'>Password: </label>
+      <input class='form-input' type='password' name='password'>
+    </div>
+    <input type='submit' value='Create Account!' class='form-button'>
+  </form>
+  <h4>Already signed up?    <a href='/session/new'>Log In</a></h4>
+</main>

@@ -34,7 +34,7 @@ class ControllerBase
   end
 
   def render(template_name, controller_name = self.class.to_s.underscore)
-    vars = { '@current_user' => current_user }
+    vars = { '@current_user' => current_user, 'flash' => flash}
     path = "app/views/#{controller_name}/#{template_name}.html.erb"
     full_path = File.join(File.dirname(__dir__), path)
     template = ERB.new(File.read(full_path))
@@ -43,10 +43,13 @@ class ControllerBase
     final = ERB.new(File.read(final_path))
     render_content(final.result(binding), 'text/html')
   end
-  
 
   def session
     @session ||= Session.new(req)
+  end
+
+  def flash
+    @flash ||= Flash.new(req)
   end
 
   def invoke_action(name)

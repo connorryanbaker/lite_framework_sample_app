@@ -21,12 +21,14 @@
   </ul>
   <h3>Add a Todo!</h3>
   <form action="/users/<%= @user.id %>/todos" method="post">
-    <label for="title">Title
-      <input type="text" name="title">
-    </label>
-    <label for="description">Description
-      <input type="text" name="description">
-    </label>
-    <input type="submit" value="Create Todo" class="button">
+    <div class='form-input-wrap'>
+      <label class='form-input-label' for='title'>Title: </label>
+      <input class='form-input' type='text' name='title'>
+    </div>
+    <div class='form-input-wrap'>
+      <label class='form-input-label' for='description'>Description: </label>
+      <input class='form-input' type='text' name='description'>
+    </div>
+    <input type="submit" value="Create Todo" class="form-button">
   </form>
 </main>

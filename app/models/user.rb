@@ -20,7 +20,8 @@ class User < ModelBase
 
   def self.authenticate(params)
     user = User.where(username: params['username'])
-    user && user.is_password?(params['password']) ? user : nil
+    return nil if user == []
+    user.is_password?(params['password']) ? user : nil
   end
 
   def is_password?(password)

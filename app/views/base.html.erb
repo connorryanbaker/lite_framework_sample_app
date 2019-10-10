@@ -11,7 +11,7 @@
         <h3>Welcome back, <strong><%= current_user.username %></strong></h3>
         <form action="/session" method="post">
           <input type="hidden" name="_method" value="DELETE">
-          <input type="submit" value="Log Out" class="button">
+          <input type="submit" value="Log Out" class="form-button">
         </form>
       <% else %>
         <h1>Welcome!</h1>
@@ -21,6 +21,13 @@
         <a href="/"><em>Todo App Lite</em></a>
       </div>
     </nav>
+    <% if flash['errors'] %>
+      <ul class="main-errors">
+        <% flash['errors'].each do |error|%>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    <% end %>
     <%= @template %>
   </body>
 </html>
