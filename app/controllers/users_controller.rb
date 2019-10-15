@@ -16,8 +16,8 @@ class UsersController < ControllerBase
   end
 
   def create
-    name, password = params['username'] || params[:username], params['password'] || params[:password]
-    if name.length < 6 || passsword.length < 6
+    name, password = params['username'], params['password'] 
+    if name.length < 6 || password.length < 6
       flash['errors'] = ['Whoops! Minimum length for username / password is six characters']
       render('new')
     else
